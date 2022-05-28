@@ -1,0 +1,14 @@
+name: TheDeQUHC
+version: '${project.version}'
+main: com.thedeq.thedequhc.TheDeQUHC
+api-version: 1.18
+authors: [ KR_GAMING2005 ]
+commands:
+  theuhc:
+    description: Main command.
+
+permissions:
+  thedeq.uhc.command:
+    description: TheDeQ UHC command.
+  thedeq.uhc.start:
+    description: TheDeQ UHC start command.

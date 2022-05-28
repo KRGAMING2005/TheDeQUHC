@@ -1,0 +1,9 @@
+prefix: "&2The&aDeQ &2UHC &7>>"
+noPerm: "%prefix% &cDu har inte tillgång till detta kommandot!"
+playerOnly: "%prefix% &cDu måste vara en spelare för att kunna använda detta kommando!"
+help: |
+  &7==== &2TheDeQ &aUHC &7====
+  &f/uhc &7- &fVisar denna sidan
+  &f/uhc help &7- &fVisar denna sidan
+  &f/uhc start &7- &fStartar UHC om det finns tillräckligt många spelare
+  &f/uhc event &7- &fSätter UHC i eventläge
