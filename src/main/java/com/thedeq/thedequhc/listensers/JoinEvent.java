@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinEvent implements Listener {
 
@@ -28,6 +29,14 @@ public class JoinEvent implements Listener {
         }else if (plugin.gameManager.getGameState() == GameState.PVP) {
             plugin.gameManager.addSpectator(player);
         }else if (plugin.gameManager.getGameState() == GameState.DEATHMATCH) {
+            plugin.gameManager.addSpectator(player);
+        }
+    }
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        if (!(plugin.gameManager.getGameState() == GameState.LOBBY) && !(plugin.gameManager.getSpectators().contains(player))) {
+            player.setHealth(0);
             plugin.gameManager.addSpectator(player);
         }
     }

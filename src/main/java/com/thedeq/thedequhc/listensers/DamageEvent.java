@@ -20,6 +20,9 @@ public class DamageEvent implements Listener {
                 }
             }
         }
+        if (plugin.gameManager.getGameState() == GameState.LOBBY) {
+            event.setCancelled(true);
+        }
     }
 
 }

@@ -17,43 +17,49 @@ public class thedeqUHCCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            if (args.length == 0) {
-                sender.sendMessage(ChatUtill.format(plugin.getConfig().getString("help")));
-            }else if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("help")) {
+            if (sender.hasPermission("thedeq.uhc.command")) {
+                if (args.length == 0) {
                     sender.sendMessage(ChatUtill.format(plugin.getConfig().getString("help")));
-                }else if (args[0].equalsIgnoreCase("start")) {
-                    plugin.gameManager.setGameState(GameState.STARTING);
-                    sender.sendMessage("STARTING");
-                }else if (args[0].equalsIgnoreCase("event")) {
+                }else if (args.length == 1) {
+                    if (args[0].equalsIgnoreCase("help")) {
+                        sender.sendMessage(ChatUtill.format(plugin.getConfig().getString("help")));
+                    }else if (args[0].equalsIgnoreCase("start")) {
+                        if (sender.hasPermission("thedeq.uhc.start")) {
+                            plugin.gameManager.setGameState(GameState.STARTING);
+                            sender.sendMessage("STARTING");
+                        }else {
+                            sender.sendMessage(ChatUtill.format(plugin.getConfig().getString("noPerm")));
+                        }
+                    }else if (args[0].equalsIgnoreCase("event")) {
 
-                }else if (args[0].equalsIgnoreCase("stop")) {
-                    plugin.gameManager.setGameState(GameState.LOBBY);
-                    sender.sendMessage("EMERGENCY RESET");
-                }else if (args[0].equalsIgnoreCase("gamestate")) {
-                    if (args[1].equalsIgnoreCase("LOBBY")) {
+                    }else if (args[0].equalsIgnoreCase("stop")) {
                         plugin.gameManager.setGameState(GameState.LOBBY);
-                    }
-                    if (args[1].equalsIgnoreCase("STARTING")) {
-                        plugin.gameManager.setGameState(GameState.STARTING);
-                    }
-                    if (args[1].equalsIgnoreCase("GRACE_PERIOD")) {
-                        plugin.gameManager.setGameState(GameState.GRACE_PERIOD);
-                    }
-                    if (args[1].equalsIgnoreCase("PVP")) {
-                        plugin.gameManager.setGameState(GameState.PVP);
-                    }
-                    if (args[1].equalsIgnoreCase("DEATHMATCH")) {
-                        plugin.gameManager.setGameState(GameState.DEATHMATCH);
-                    }
-                    if (args[1].equalsIgnoreCase("SUDDEN_DEATH")) {
-                        plugin.gameManager.setGameState(GameState.SUDDEN_DEATH);
-                    }
-                    if (args[1].equalsIgnoreCase("WINNER")) {
-                        plugin.gameManager.setGameState(GameState.WINNER);
-                    }
-                    if (args[1].equalsIgnoreCase("ENDING")) {
-                        plugin.gameManager.setGameState(GameState.ENDING);
+                        sender.sendMessage("EMERGENCY RESET");
+                    }else if (args[0].equalsIgnoreCase("gamestate")) {
+                        if (args[1].equalsIgnoreCase("LOBBY")) {
+                            plugin.gameManager.setGameState(GameState.LOBBY);
+                        }
+                        if (args[1].equalsIgnoreCase("STARTING")) {
+                            plugin.gameManager.setGameState(GameState.STARTING);
+                        }
+                        if (args[1].equalsIgnoreCase("GRACE_PERIOD")) {
+                            plugin.gameManager.setGameState(GameState.GRACE_PERIOD);
+                        }
+                        if (args[1].equalsIgnoreCase("PVP")) {
+                            plugin.gameManager.setGameState(GameState.PVP);
+                        }
+                        if (args[1].equalsIgnoreCase("DEATHMATCH")) {
+                            plugin.gameManager.setGameState(GameState.DEATHMATCH);
+                        }
+                        if (args[1].equalsIgnoreCase("SUDDEN_DEATH")) {
+                            plugin.gameManager.setGameState(GameState.SUDDEN_DEATH);
+                        }
+                        if (args[1].equalsIgnoreCase("WINNER")) {
+                            plugin.gameManager.setGameState(GameState.WINNER);
+                        }
+                        if (args[1].equalsIgnoreCase("ENDING")) {
+                            plugin.gameManager.setGameState(GameState.ENDING);
+                        }
                     }
                 }
             }
