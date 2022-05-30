@@ -326,7 +326,7 @@ public class GameManager {
     }
 
     public void sendMessageToDiscord(String name) {
-        String url = "https://discordapp.com/api/webhooks/953672594492645416/t48Hx062pcPqaYchy3GFwfUeFxT4WygedcJ5stPHBdJNwMxUf1XBdO0Istm1BJnHfHYV";
+        String url = "";
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
